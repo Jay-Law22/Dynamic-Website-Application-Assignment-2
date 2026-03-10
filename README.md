@@ -21,6 +21,7 @@ Amoy Forbes (2101011662)
 Javohn Lawrence (2201013796) 
 
 ============= Technologies Used =============
+
 HTML5 *
 
 CSS3 *
