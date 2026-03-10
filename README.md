@@ -3,6 +3,7 @@ Assignment # 2- JavaScript Assignment
 Lecturer: Doron Williams
 
 ============= Overview =============
+
 This assignment included: 
 
 * Modern Data Fetching & Arrays 
