@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ========================= TAILWIND CDN ========================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- ========================= STYLESHEET CSS ========================= -->
+    <link rel="stylesheet" href="/assets/styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"  rel="stylesheet"/>
+    <!-- ========================= Jquery ========================= -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <title>JS Assignment - Modern Data Fetching</title>
+</head>
+<body class="min-h-screen pb-20">
+    <!-- ========================= Header Layout ========================= -->
+    <header class="glass-header">
+        <div class="max-w-6xl mx-auto px-6 py-8">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-sm uppercase tracking-[0.2em] font-black mb-1" style="color: var(--primary)">
+                        JavaScript <span style="color: var(--accent-pink);">Assignment</span>
+                    </h2>
+                    <h1 class="text-4xl font-extrabold text-[var(--text-title)] tracking-tight">
+                        Dynamic Websites & Applications
+                    </h1>
+                    <p class="text-xl mt-1 opacity-80">
+                        Instructor: <span class="font-semibold text-[var(--text-title)]">Doron Williams</span>
+                    </p>
+                </div>
+                <button id="themeToggle" class="group p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] shadow-sm">
+                    <span id="themeIcon" class="text-xl block group-hover:rotate-45 transition-transform duration-300"><i class="ri-moon-fill"></i></span>
+                </button>
+            </div>
+
+            <div class="pt-6 border-t border-[var(--border)]">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <span class="text-sm font-bold uppercase opacity-50 tracking-widest md:w-32">The Team</span>
+                    <!-- Group Members-->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow text-[var(--text-title)]">
+                        <!-- Group Member #1 -->
+                        <div class="border-l-2 border-[var(--primary)] pl-3">
+                            <p class="font-bold">Lincoln Blackstock</p>
+                            <p class="text-xs opacity-60 font-mono">ID# 230-101-0884</p>
+                        </div>
+
+                        <!-- Group Member #2 -->
+                        <div class="border-l-2 border-[var(--accent-pink)] pl-3">
+                            <p class="font-bold">Amoy Forbes</p>
+                            <p class="text-xs opacity-60 font-mono">ID# 210-101-1662</p>
+                        </div>
+
+                        <!-- Group Member #3 -->
+                        <div class="border-l-2 border-[var(--accent-pink)] pl-3">
+                            <p class="font-bold">Peta-Gaye Simpson</p>
+                            <p class="text-xs opacity-60 font-mono">ID# 230-101-0142</p>
+                        </div>
+
+                        <!-- Group Member #3 -->
+                        <div class="border-l-2 border-[var(--primary)] pl-3">
+                            <p class="font-bold">Javohn Lawrence</p>
+                            <p class="text-xs opacity-60 font-mono">ID# 220-101-3796</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ========================= Question Navigation ========================= -->
+    <nav class="max-w-6xl mx-auto px-6 mt-4 flex space-x-10 border-b border-[var(--border)]">
+        <button id="tab1" class="tab-link active">Question #1</button>
+        <button id="tab2" class="tab-link ">Question #2</button>
+        <button id="tab3" class="tab-link ">Question #3</button>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <!-- Question 1 -->
+        <section id="q1-content" class="question-content transition-all duration-500">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+                <div>
+                    <h3 class="text-3xl font-bold text-[var(--text-title)]">Modern Data Fetching</h3>
+                    <p class="text-lg italic text-[var(--text-subtitle)]">Array maniplation and local persistence demo.</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm font-mono opacity-40">Assignment Task 1/3</p>
+                    <div class="h-1 w-32 bg-[var(--accent-soft)] rounded-full mt-1 overflow-hiddden">
+                        <div class="h-full bg-[var(--primary)] w-1/3"></div>
+                    </div>
+                </div>
+            </div>
+            <!--========================= Work Area =========================-->
+            <div class="bg-[var(--header-bg)] rounded-3xl p-8 border border-[var(--border)] shadow-xl min-h-[300px]">
+                <div class="mb-6">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center opacity-50">
+                            <i class="ri-search-line"></i>
+                        </span>
+                        <input 
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by name.."
+                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--accent-soft)] text-[var(--text-title)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all">
+                    </div>
+                </div>
+                <!-- Button -->                 
+                <div class="flex gap-4 mb-6">
+                    <button onclick="Clear()" class="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-bold hover:cursor-pointer">Clear Storage</button>
+                    <button onclick="location.reload()" class="px-4 py-2 bg-[var(--primary)] text-white rounded-lg text-sm font-bold hover:cursor-pointer">Refresh Data</button>
+                    <button onclick="toggleView()" id="viewBtn" class="px-4 py-2 bg-[var(--accent-pink)] text-white rounded-lg text-sm font-bold hover:cursor-pointer">Switch to List View</button>
+                </div>
+
+                <!-- Table  -->
+                <div id="tableView" class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-[var(--border)] text-[var(--primary)] uppercase text-xs tracking-widest">
+                                <th class="py-4 px-2">Id#</th>
+                                <th class="py-4 px-2">Name</th>
+                                <th class="py-4 px-2">Age</th>
+                                <th class="py-4 px-2">Department</th>
+                                <th class="py-4 px-2">Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeeTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="demo" class="hidden">
+                    <ul id="employeeList" class="space-y-2 list-disc pl-5 text-[var(--text-title)]"></ul>
+                </div>
+                <div id="totalSalaryContainer" class="mt-8 pt-6 border-t border-[var(--border) text-right]">
+                </div>
+            </div>
+        </section>
+        <!-- Question 2 -->
+         <section id="q2-content" class="question-content hidden animate-in fade-in transition-all duration-700">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+                <div>
+                    <h3 class="text-3xl font-bold text-[var(--text-title)]">Fun With Forms</h3>
+                    <p class="text-lg italic text-[var(--text-subtitle)]">Dynamic states and custom validation.</p>
+                </div>
+                <div class="text-right">
+                <p class="text-sm font-mono opacity-40">Assignment Task 2/3</p>
+                    <div class="h-1 w-32 bg-[var(--accent-soft)] rounded-full mt-1 overflow-hiddden">
+                        <div class="h-full bg-[var(--primary)] w-2/3"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <!--========================= Work Area =========================-->
+            <form id="billingForm" class="bg-[var(--header-bg)] rounded-3xl p-8 border border-[var(--border)] shadow-xl space-y-8">
+               
+                <fieldset class="border-t border-[var(--border)] pt-6">
+                    <legend class="px-4 text-sm font-black uppercase tracking-widest text-[var(--primary)]">Billing Information</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                         <!-- Name -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Name</label>
+                            <input type="text" id="fullname" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- Email -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Email Address</label>
+                            <input type="email" id="email" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- Address -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Address</label>
+                            <input type="text" id="address" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- City -->
+                         <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">City</label>
+                            <input type="text" id="city" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                         </div>
+                         <!-- State -->
+                         <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-50">State / Province</label>
+                            <input type="text" id="state" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- Postal Code -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-50">Postal Code</label>
+                            <input type="text" id="postalcode" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- drop down -->
+                         <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Country</label>
+                            <select id="country" required class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none cursor-pointer">
+                                <option value="">Choose your country</option>
+                                <option value="JM">Jamaica</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="UK">United Kingdom</option>
+                            </select>
+                         </div>
+                    </div>
+                </fieldset>
+
+                <div class="space-y-6 pt-6 border-t border-[var(--border)]">
+                    <label class="text-xs font-bold uppercase opacity-60 mb-4">Payment Method</label>
+                    <div class="flex gap-6">
+                        <!-- PayPal -->
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="payment" value="paypal" checked onchange="togglePaymentFields()" class="w-4 h-4 accent-[var(--primary)]">
+                            PayPal
+                        </label>
+                        <!-- Credit Card -->
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="payment" value="visa" checked onchange="togglePaymentFields()" class="w-4 h-4 accent-[var(--primary)]">
+                            Visa Card
+                        </label>
+                        <!--Master Card -->
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="payment" value="mastercard" checked onchange="togglePaymentFields()" class="w-4 h-4 accent-[var(--primary)]">
+                            MasterCard
+                        </label>
+                    </div>
+
+                    <div id="cardFields" class="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-40 pointer-events-none transition-all duration-500 grayscale">
+                        <!-- Name on card -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Card Number</label>
+                                <input type="text" id="cardName" placeholder="Jon Doe" disabled class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- Credit card -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" disabled class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- Exp. date -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Expiration Date</label>
+                            <input type="text" id="expiry" placeholder="MM/YY" disabled class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                        <!-- CVV -->
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold mb-1 uppercase opacity-60">Expiration Date</label>
+                            <input type="text" id="cvv" placeholder="000" disabled class="p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-[var(--border)]">
+                  <label class="flex items-center gap-3 cursor-pointer text-lg font-bold">
+                    <input type="checkbox" id="sameAsBilling" checked onchange="toggleShipping()" class="w-4 h-4 accent-[var(--primary)]">
+                    Same as billing information
+                    </label>
+
+                <div id="shippingFields" class="hidden mt-6 space-y-4 animate-in slide-in-from-top duration-500">
+                    <label class="text-xs font-bold uppercase opacity-40 mb-4">Additional Shipping Info</label>
+                    <input type="text" class="w-full p-3 rounded-xl bg-[var(--accent-soft)] border border-[var(--border)] focus:ring-2 focus:ring-[var(--primary)] outline-none" placeholder="Enter shipping address">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-[var(--primary)] text-white font-black rounded-2xl hover:opacity-90 transition-opacity">
+                SUBMIT 
+             </button>
+            </form>
+         </section>
+         <!-- Questin 3 -->
+          <section id="q3-content" class="question-content hidden animate-in fade-in transition-all duration-700">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+                <div>
+                    <h3 class="text-3xl font-bold text-[var(--text-title)]">AJAX & DataTables</h3>
+                    <p class="text-lg italic text-[var(--text-subtitle)]">Dynamic DataTables & AJAX.</p>
+                </div>
+                <div class="text-right">
+                <p class="text-sm font-mono opacity-40">Assignment Task 3/3</p>
+                    <div class="h-1 w-32 bg-[var(--accent-soft)] rounded-full mt-1 overflow-hiddden">
+                        <div class="h-full bg-[var(--primary)] w-3/3"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--========================= Work Area =========================-->
+                <div class="overflow-hiddden rounded-3xl border border-[var(--border)] shadow-xl">
+                    <table id="employeeTable" class="display responsive nowrap w-full">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Salary</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+          </section>
+    </main>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
