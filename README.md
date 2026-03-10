@@ -2,14 +2,13 @@
 Assignment # 2- JavaScript Assignment
 Lecturer: Doron Williams
 
-JavaScript Assignment (13 Questions)
-
 ============= Overview =============
-This assignment included 
+This assignment included: 
+
 * Modern Data Fetching & Arrays 
 * Professional Form Logic & Validation 
 * Dynamic DataTables & AJAX
-* 
+  
 ============= Group Contributions =============
 
 Lincoln BlackStock (2301010884) 
